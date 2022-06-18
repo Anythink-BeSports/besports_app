@@ -7,7 +7,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  final String test = '형동진이';
+  final String test = '형동진';
 
   // This widget is the root of your application.
   @override
