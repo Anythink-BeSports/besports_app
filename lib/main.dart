@@ -5,66 +5,85 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  final String test = '형동진';
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home: const MyHomePage(title: 's s'),
+      title: 'BeSports',
+      home: const Exercise(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class Exercise extends StatefulWidget{
+  const Exercise({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Exercise> createState() => _ExerciseState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _ExerciseState extends State<Exercise> {
+  int selectedItemIndex = 0;
+  final screens = const [
+    HomePage(),
+    RecordPage(),
+    CalibrationPage(),
+    SettingPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
+        backgroundColor: Colors.white,
+        body: IndexedStack(
+          index: selectedItemIndex,
+          children: screens,
+        ),
+        bottomNavigationBar: Container(
+          decoration: const BoxDecoration(
+              border: Border(
+                top: BorderSide(width: 1.0, color: Color(0xFFD6D6D6)),
+              )
+          ),
+          child: Row(
+            children: [
+              buildNavBarItem(Icons.home, 'Home', 0),
+              buildNavBarItem(Icons.bar_chart, 'Record', 1),
+              buildNavBarItem(Icons.compass_calibration_outlined, 'Calibration', 2),
+              buildNavBarItem(Icons.settings, 'Setting', 3),
+            ],
+          ),
+        )
+    );
+  }
+
+  Widget buildNavBarItem(IconData icon, String string, int index) {
+    return GestureDetector (
+      onTap: () {
+        setState(() {
+          selectedItemIndex = index;
+        });
+      },
+      child: Container(
+        height: 85,
+        width: MediaQuery.of(context).size.width / 4,
+        decoration: BoxDecoration(
+          color: index == selectedItemIndex ? Colors.grey[350] : Colors.white,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+          children: [
+            Icon(icon, size: 32, color: index == selectedItemIndex ? Colors.indigo : Colors.black,),
+            Text(string, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,
+              color: index == selectedItemIndex ? Colors.indigo : Colors.black,),),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
