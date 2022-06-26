@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'home_page.dart';
+import 'calibration_page.dart';
+import 'setting_page.dart';
+import 'record_page.dart';
 
 void main() {
   runApp(const MyApp());
