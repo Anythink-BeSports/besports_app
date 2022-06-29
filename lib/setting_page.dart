@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -14,15 +15,15 @@ class _SettingPageState extends State<SettingPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Setting'),
-        titleTextStyle: const TextStyle(
+        titleTextStyle: TextStyle(
             color: Colors.black,
-            fontSize: 28,
+            fontSize: 26.sp,
             fontWeight: FontWeight.bold
         ),
-        toolbarHeight: 85,
+        toolbarHeight: 85.h,
         centerTitle: true,
         backgroundColor: Colors.white,
-        elevation: 1,
+        elevation: 1.5,
       ),
     );
   }

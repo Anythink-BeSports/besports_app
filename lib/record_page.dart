@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RecordPage extends StatefulWidget {
   const RecordPage({Key? key}) : super(key: key);
@@ -14,48 +15,44 @@ class _RecordPageState extends State<RecordPage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text('Record'),
-          titleTextStyle: const TextStyle(
+          titleTextStyle: TextStyle(
               color: Colors.black,
-              fontSize: 28,
+              fontSize: 26.sp,
               fontWeight: FontWeight.bold
           ),
-          toolbarHeight: 85,
+          toolbarHeight: 85.h,
           centerTitle: true,
           backgroundColor: Colors.white,
-          elevation: 1,
+          elevation: 1.5,
         ),
         body: Column(
           children: [
-            const SizedBox(height: 10,),
+            SizedBox(height: 10.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                Text('2022-06-25',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500
-                  ),
-                ),
-                SizedBox(width: 20,),
+              children: [
+                Text('2022-06-25', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12.sp),),
+                SizedBox(width: 20.w,),
               ],
             ),
             Center(
               child: Column(
                 children: [
-                  const SizedBox(height: 5,),
+                  SizedBox(height: 5.h,),
                   viewSizeBox('Bench-Press', 'Set', '5', 'Count', '42'),
-                  const SizedBox(height: 13,),
+                  SizedBox(height: 13.h,),
                   viewSizeBox('Dead-Lift', 'Set', '3', 'Count', '20'),
-                  const SizedBox(height: 13,),
+                  SizedBox(height: 13.h,),
                   viewSizeBox('Shoulder-Press', 'Set', '3', 'Count', '15'),
-                  const SizedBox(height: 13,),
+                  SizedBox(height: 13.h,),
                   viewSizeBox('Squat', 'Set', '3', 'Count', '20'),
-                  const SizedBox(height: 13,),
+                  SizedBox(height: 13.h,),
                   viewSizeBox('Leg-Press', 'Set', '3', 'Count', '30'),
-                  const SizedBox(height: 13,),
+                  SizedBox(height: 13.h,),
                   viewSizeBox('Chest-Press', 'Set', '3', 'Count', '20'),
-                  const SizedBox(height: 13,),
+                  SizedBox(height: 13.h,),
                   viewSizeBox('Lat-Pull-Down', 'Set', '3', 'Count', '10'),
-                  const SizedBox(height: 13,),
+                  SizedBox(height: 13.h,),
                 ],
               ),
             )
@@ -66,7 +63,7 @@ class _RecordPageState extends State<RecordPage> {
 
   SizedBox viewSizeBox(String string1, String string2, String string3, String string4, String string5) {
     return SizedBox(
-      width: 380, height: 50,
+      width: 330.w, height: 50.h,
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(primary: Colors.white,
@@ -75,32 +72,32 @@ class _RecordPageState extends State<RecordPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              width: 120,
+              width: 110.w,
               child: Text(string1,
-                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17),
+                style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 15.sp),
               ),
             ),
-            const SizedBox(width: 100,),
+            SizedBox(width: 90.w,),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(string2,
-                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17),
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 15.sp),
                 ),
                 Text(string3,
-                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17),
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 15.sp),
                 ),
               ],
             ),
-            const SizedBox(width: 40,),
+            SizedBox(width: 30.w,),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(string4,
-                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17),
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 15.sp),
                 ),
                 Text(string5,
-                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17),
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 15.sp),
                 ),
               ],
             )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,15 +15,15 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text('Exercise'),
-          titleTextStyle: const TextStyle(
+          titleTextStyle: TextStyle(
               color: Colors.black,
-              fontSize: 28,
+              fontSize: 26.sp,
               fontWeight: FontWeight.bold
           ),
-          toolbarHeight: 85,
+          toolbarHeight: 85.h,
           centerTitle: true,
           backgroundColor: Colors.white,
-          elevation: 1,
+          elevation: 1.5,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -30,73 +31,71 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: [
                 SizedBox(
-                  height: 85,
+                  height: 85.h,
                   width: MediaQuery.of(context).size.width / 3,
                   child: Column(
-                    children: const [
-                      Text('Set', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                      SizedBox(height: 6,),
-                      Text('0', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    children: [
+                      Text('Set', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),),
+                      SizedBox(height: 6.h,),
+                      Text('0', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 85,
+                  height: 85.h,
                   width: MediaQuery.of(context).size.width / 3,
                   child: Column(
-                    children: const [
-                      Text('Time', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                      SizedBox(height: 6,),
-                      Text('00:00', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    children: [
+                      Text('Time', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),),
+                      SizedBox(height: 6.h,),
+                      Text('00:00', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 85,
+                  height: 85.h,
                   width: MediaQuery.of(context).size.width / 3,
                   child: Column(
-                    children: const [
-                      Text('Rest', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                      SizedBox(height: 6,),
-                      Text('00:00.0', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    children: [
+                      Text('Rest', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),),
+                      SizedBox(height: 6.h,),
+                      Text('00:00.0', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),),
                     ],
                   ),
                 )
               ],
             ),
-            Center(
-              child: Container(
-                width: 230,
-                height: 230,
-                decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: CircleBorder(
-                        side: BorderSide(
-                          width: 40,
-                          color: Colors.grey[350]!,
-                        )
-                    )
-                ),
-                child: const Center(
-                  child: Text('0', style: TextStyle(fontSize: 34),),
-                ),
+            Container(
+              width: 230.w,
+              height: 230.h,
+              decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: CircleBorder(
+                      side: BorderSide(
+                        width: 35.w,
+                        color: Colors.grey[350]!,
+                      )
+                  )
+              ),
+              child: Center(
+                child: Text('1/15', style: TextStyle(fontSize: 30.sp),),
               ),
             ),
-            const Text('Weight : 0kg', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),),
+            Text('Weight : 0kg', style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w500),),
             SizedBox(
-                width: 120,
-                height: 50,
-                child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.black,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0)
-                        )
-                    ),
-                    child: const Text('SET', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),)
-                )
-            )
+              width: 110.w,
+              height: 50.h,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)
+                  ),
+                ),
+                child: Text('SET', style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),)
+              ),
+            ),
           ],
         )
     );
