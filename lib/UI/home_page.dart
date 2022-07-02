@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,15 +16,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text('Exercise'),
-          titleTextStyle: TextStyle(
-              color: Colors.black,
-              fontSize: 26.sp,
-              fontWeight: FontWeight.bold
-          ),
-          toolbarHeight: 85.h,
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          elevation: 1.5,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

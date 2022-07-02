@@ -16,15 +16,6 @@ class _SettingPageState extends State<SettingPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Setting'),
-        titleTextStyle: TextStyle(
-            color: Colors.black,
-            fontSize: 26.sp,
-            fontWeight: FontWeight.bold
-        ),
-        toolbarHeight: 85.h,
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 1.5,
       ),
       body:
       TextButton(style: TextButton.styleFrom(

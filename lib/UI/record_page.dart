@@ -1,29 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'calendar_page.dart';
 
 class RecordPage extends StatefulWidget {
-  const RecordPage({Key? key}) : super(key: key);
+  final DateTime dateTime;
+  const RecordPage({Key? key, required this.dateTime}) : super(key: key);
 
   @override
   State<RecordPage> createState() => _RecordPageState();
 }
 
 class _RecordPageState extends State<RecordPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text('Record'),
-          titleTextStyle: TextStyle(
-              color: Colors.black,
-              fontSize: 26.sp,
-              fontWeight: FontWeight.bold
-          ),
-          toolbarHeight: 85.h,
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          elevation: 1.5,
         ),
         body: ListView(
           children: [
@@ -32,7 +27,7 @@ class _RecordPageState extends State<RecordPage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 10.0.h, 20.0.w, 10.0.h),
-                    child: Text('2022-06-30', style: TextStyle(fontWeight: FontWeight.w500),),)
+                    child: Text(DateFormat('yyyy-MM-dd').format(widget.dateTime)),)
                 ]
             ),
             viewCard('Bench-Press', '5', '42'),
@@ -42,6 +37,12 @@ class _RecordPageState extends State<RecordPage> {
             viewCard('Leg-Press', '3', '20'),
             viewCard('Chest-Press', '3', '12'),
             viewCard('Lat-Pull-Down', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
             viewCard('Shoulder-Press', '3', '12'),
             viewCard('Shoulder-Press', '3', '12'),
           ],

@@ -15,15 +15,6 @@ class _CalibrationPageState extends State<CalibrationPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Calibration'),
-        titleTextStyle: TextStyle(
-            color: Colors.black,
-            fontSize: 26.sp,
-            fontWeight: FontWeight.bold
-        ),
-        toolbarHeight: 85.h,
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 1.5,
       ),
     );
   }
