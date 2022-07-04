@@ -1,11 +1,23 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:sports_application/service.controller/Auth_controller.dart';
 import 'home_page.dart';
 import 'calibration_page.dart';
+import 'login_page.dart';
 import 'setting_page.dart';
 import 'record_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyAIt9hf_tp8VddRdXvgutmT7QNoT4dYqFo",
+          appId: "1:318975849915:android:9ce3a0f937d78111d5009e",
+          messagingSenderId: "318975849915",
+          projectId: "anythink-health")
+  ).then((value) => Get.put(AuthController()));
   runApp(const MyApp());
 }
 
@@ -17,13 +29,13 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       builder: (context, child) {
-        return MaterialApp(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.red,
           ),
           title: 'BeSports',
-          home: const BeSports(),
+          home: const LoginPage(),
         );
       }
     );
@@ -31,7 +43,8 @@ class MyApp extends StatelessWidget {
 }
 
 class BeSports extends StatefulWidget{
-  const BeSports({Key? key}) : super(key: key);
+  String email;
+  BeSports({Key? key, required this.email}) : super(key: key);
 
   @override
   State<BeSports> createState() => _BeSportsState();
