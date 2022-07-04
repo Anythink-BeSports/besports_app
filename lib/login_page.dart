@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sports_application/register_page.dart';
 import 'package:sports_application/service.controller/Auth_controller.dart';
@@ -17,23 +18,23 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
-              width: w,
-              height: h / 8,
+            Container(
+              height: 80.h,
+              padding: const EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
                     "BeSports",
                     style: TextStyle(
+                        
                         color: Colors.black,
-                        fontSize: 32,
+                        fontSize: 28.sp,
                         fontWeight: FontWeight.bold
                     ),
                   ),
@@ -42,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(
               width: w - w / 10,
-              height: h / 3,
+              height: 150.h,
               child: Column(
                 children: [
                   TextField(
@@ -91,25 +92,24 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(
-              width: w,
-              height: h / 3,
+              height: 120.h,
               child: Column(
                 children: [
                   ElevatedButton(style: ElevatedButton.styleFrom(
                       primary: Colors.black,
-                      minimumSize: Size(w - w / 10, 24),
-                      textStyle: const TextStyle(fontSize: 22),
+                      minimumSize: Size(w - w / 10, 15.h),
+                      textStyle: TextStyle(fontSize: 18.sp),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
                   ),
                       onPressed: () => AuthController.instance.login(emailController.text.trim(), passwordController.text.trim()),
                       child: const Text("로그인")),
-                  SizedBox(width: w, height: 10),
+                  SizedBox(width: w, height: 5),
                   TextButton(style: TextButton.styleFrom(
                       primary: Colors.black,
-                      minimumSize: Size(w - w / 10, 24),
-                      textStyle: const TextStyle(fontSize: 22),
+                      minimumSize: Size(w - w / 10, 15.h),
+                      textStyle: TextStyle(fontSize: 18.sp),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
