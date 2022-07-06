@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:sports_application/record_detail_page.dart';
 import 'calendar_page.dart';
 
 class RecordPage extends StatefulWidget {
@@ -49,13 +50,23 @@ class _RecordPageState extends State<RecordPage> {
         )
     );
   }
-  Card viewCard(String exercise_name, String set_num, String count_num) => Card(
+
+  Widget viewCard(String exercise_name, String set_num, String count_num) => Card(
     margin: EdgeInsets.fromLTRB(20.0.w, 0, 20.0.w, 13.0.h),
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0.sp)
     ),
-    elevation: 10,
+    elevation: 5.h,
     child: ListTile(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context)=>RecordDetailPage()),
+          );
+        },
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0.sp)
+        ),
         title: Text(exercise_name, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15.sp),),
         trailing: Container(
           margin: EdgeInsets.zero,
