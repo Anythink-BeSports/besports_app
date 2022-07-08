@@ -13,7 +13,6 @@ class RecordPage extends StatefulWidget {
 }
 
 class _RecordPageState extends State<RecordPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +60,7 @@ class _RecordPageState extends State<RecordPage> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context)=>RecordDetailPage()),
+            MaterialPageRoute(builder: (context)=>RecordDetailPage(dateTime: widget.dateTime)),
           );
         },
         shape: RoundedRectangleBorder(

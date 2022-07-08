@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_time_patterns.dart';
 import 'package:intl/intl.dart';
 import 'calendar_page.dart';
 
 class RecordDetailPage extends StatefulWidget {
+  final DateTime dateTime;
+  const RecordDetailPage({Key? key, required this.dateTime}) : super(key: key);
 
   @override
   State<RecordDetailPage> createState() => _RecordDetailPageState();
@@ -44,7 +47,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
               children: [
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 20.0.w, 0),
-                  child: Text('2022-06-30', style: TextStyle(fontWeight: FontWeight.w500),),
+                  child: Text(DateFormat('yyyy-MM-dd').format(widget.dateTime), style: TextStyle(fontWeight: FontWeight.w500),),
                 )
               ],
             ),
