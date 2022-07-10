@@ -19,12 +19,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              height: 80.h,
               padding: const EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     "BeSports",
                     style: TextStyle(
-                        
+
                         color: Colors.black,
                         fontSize: 28.sp,
                         fontWeight: FontWeight.bold
@@ -43,7 +43,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(
               width: w - w / 10,
-              height: 150.h,
               child: Column(
                 children: [
                   TextField(
@@ -92,7 +91,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(
-              height: 120.h,
               child: Column(
                 children: [
                   ElevatedButton(style: ElevatedButton.styleFrom(
@@ -114,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(10)
                       )
                   ),
-                      onPressed: () => Get.to(()=>const RegisterPage()),
+                      onPressed: () { Get.to(()=>const RegisterPage()); },
                       child: const Text("회원가입"))
                 ],
               ),

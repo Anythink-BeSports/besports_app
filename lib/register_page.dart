@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sports_application/service.controller/Auth_controller.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -9,26 +10,30 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var passwordCheckController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
                 width: w,
-                height: 80.h,
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "BeSports",
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 32,
+                          fontSize: 28.sp,
                           fontWeight: FontWeight.bold
                       ),
                     ),
@@ -37,11 +42,10 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             SizedBox(
               width: w - w / 10,
-              height: 180.h,
               child: Column(
                 children: [
                   TextField(
-//                      controller: emailController,
+                    controller: emailController,
                     decoration: InputDecoration(
                       hintText: "E-mail",
                       focusedBorder: OutlineInputBorder(
@@ -62,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   SizedBox(width: w, height: 10),
                   TextField(
-//                      controller: emailController,
+                    controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: "Password",
@@ -84,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   SizedBox(width: w, height: 10),
                   TextField(
-//                      controller: emailController,
+                    controller: passwordCheckController,
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: "PasswordCheck",
@@ -109,7 +113,6 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             SizedBox(
               width: w,
-              height: 70.h,
               child: Column(
                 children: [
                   ElevatedButton(style: ElevatedButton.styleFrom(
@@ -120,7 +123,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           borderRadius: BorderRadius.circular(10)
                       )
                   ),
-                      onPressed: (){},
+                      onPressed: () async {
+                        AuthController.instance.register(emailController.text.trim(), passwordController.text.trim(), passwordCheckController.text.trim());
+                      },
                       child: const Text("회원가입")),
                 ],
               ),

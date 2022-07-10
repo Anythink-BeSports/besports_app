@@ -28,49 +28,45 @@ class AuthController extends GetxController{
     }
   }
 
-  Future<void> register(String email, password) async {
+  Future<void> register(String email, password, passwordCheck) async {
     try{
+      if(password != passwordCheck) {
+        throw Exception("password와 passwordCheck가 다릅니다");
+      }
       await auth.createUserWithEmailAndPassword(email: email, password: password);
-    }catch(e){
-      Get.snackbar("About User", "User message",
-          backgroundColor: Colors.redAccent,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: const Text(
-            "Account creation failed",
-            style: TextStyle(
-                color: Colors.white
-            ),
-          ),
-          messageText: Text(
-            e.toString(),
-            style: const TextStyle(
-                color: Colors.white
-            ),
-          )
-      );
+    }catch(e) {
+      failedDialog(e);
     }
   }
+
   Future<void> login(String email, password) async {
     try{
       await auth.signInWithEmailAndPassword(email: email, password: password);
-    }catch(e){
-      Get.snackbar("About Login", "Login message",
-          backgroundColor: Colors.redAccent,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: const Text(
-            "Login failed",
-            style: TextStyle(
-                color: Colors.white
-            ),
-          ),
-          messageText: Text(
-            e.toString(),
-            style: const TextStyle(
-                color: Colors.white
-            ),
-          )
-      );
+    }catch(e) {
+      failedDialog(e);
     }
+  }
+
+  void failedDialog(e) {
+    var context = Get.context;
+    showDialog(
+      context: context!,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Login failed"),
+          content: Text(e.message),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Future<void> logOut() async {
