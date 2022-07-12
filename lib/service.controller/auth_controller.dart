@@ -24,7 +24,7 @@ class AuthController extends GetxController{
       Get.offAll(()=>const LoginPage());
     }else{
       print("${user.email!}님 환영합니다!");
-      Get.offAll(()=>BeSports(email:user.email!));
+      Get.offAll(() => const BeSports(), arguments: user.email);
     }
   }
 

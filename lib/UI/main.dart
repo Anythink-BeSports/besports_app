@@ -1,8 +1,12 @@
+import 'dart:html';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sports_application/service.controller/auth_controller.dart';
+import 'package:sports_application/service.controller/record_controller.dart';
+import '../collection/record_data.dart';
 import 'calibration_page.dart';
 import 'home_page.dart';
 import 'login_page.dart';
@@ -13,10 +17,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
       options: const FirebaseOptions(
-          apiKey: "AIzaSyAIt9hf_tp8VddRdXvgutmT7QNoT4dYqFo",
+          apiKey: "AIzaSyB3qid04D4osUkvTVBSOWxEIe9WQv-wBH4",
           appId: "1:318975849915:android:9ce3a0f937d78111d5009e",
-          messagingSenderId: "318975849915",
-          projectId: "anythink-health")
+          messagingSenderId: "345146137232",
+          projectId: "BeSports")
   ).then((value) => Get.put(AuthController()));
   runApp(const MyApp());
 }
@@ -43,11 +47,10 @@ class MyApp extends StatelessWidget {
 }
 
 class BeSports extends StatefulWidget{
-  String email;
-  BeSports({Key? key, required this.email}) : super(key: key);
+  const BeSports({Key? key}) : super(key: key);
 
   @override
-  State<BeSports> createState() => _BeSportsState();
+  State<BeSports> createState() => _BeSportsState(Get.arguments);
 }
 
 class _BeSportsState extends State<BeSports> {
@@ -58,6 +61,13 @@ class _BeSportsState extends State<BeSports> {
     CalibrationPage(),
     SettingPage(),
   ];
+
+  _BeSportsState(email) {
+    Get.put(RecordController(email));
+    RecordController.instance.readRecord().then((value) {
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
