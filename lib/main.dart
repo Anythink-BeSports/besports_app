@@ -1,70 +1,112 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:sports_application/service.controller/Auth_controller.dart';
+import 'home_page.dart';
+import 'calibration_page.dart';
+import 'login_page.dart';
+import 'setting_page.dart';
+import 'record_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyAIt9hf_tp8VddRdXvgutmT7QNoT4dYqFo",
+          appId: "1:318975849915:android:9ce3a0f937d78111d5009e",
+          messagingSenderId: "318975849915",
+          projectId: "anythink-health")
+  ).then((value) => Get.put(AuthController()));
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  final String test = '동진';
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 's s s'),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      builder: (context, child) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.red,
+          ),
+          title: 'BeSports',
+          home: const LoginPage(),
+        );
+      }
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class BeSports extends StatefulWidget{
+  String email;
+  BeSports({Key? key, required this.email}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<BeSports> createState() => _BeSportsState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _BeSportsState extends State<BeSports> {
+  int selectedItemIndex = 0;
+  final screens = const [
+    HomePage(),
+    RecordPage(),
+    CalibrationPage(),
+    SettingPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
+        backgroundColor: Colors.white,
+        body: IndexedStack(
+          index: selectedItemIndex,
+          children: screens,
+        ),
+        bottomNavigationBar: Container(
+          decoration: const BoxDecoration(
+              border: Border(
+                top: BorderSide(width: 2.0, color: Color(0xFFD6D6D6)),
+              )
+          ),
+          child: Row(
+            children: [
+              buildNavBarItem(Icons.home, 'Home', 0),
+              buildNavBarItem(Icons.bar_chart, 'Record', 1),
+              buildNavBarItem(Icons.compass_calibration_outlined, 'Calibration', 2),
+              buildNavBarItem(Icons.settings, 'Setting', 3),
+            ],
+          ),
+        )
+    );
+  }
+
+  Widget buildNavBarItem(IconData icon, String string, int index) {
+    return GestureDetector (
+      onTap: () {
+        setState(() {
+          selectedItemIndex = index;
+        });
+      },
+      child: Container(
+        height: 85.h,
+        width: MediaQuery.of(context).size.width / 4,
+        decoration: BoxDecoration(
+          color: index == selectedItemIndex ? Colors.grey[350] : Colors.white,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+          children: [
+            Icon(icon, size: 28.sp, color: index == selectedItemIndex ? Colors.indigo : Colors.black,),
+            Text(string, style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold,
+              color: index == selectedItemIndex ? Colors.indigo : Colors.black,),),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
