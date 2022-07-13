@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:sports_application/record_detail_page.dart';
-import 'calendar_page.dart';
+import 'package:sports_application/UI/record_detail_page.dart';
 
 class RecordPage extends StatefulWidget {
   final DateTime dateTime;
