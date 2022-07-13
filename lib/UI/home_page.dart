@@ -15,15 +15,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text('Exercise'),
-          titleTextStyle: TextStyle(
-              color: Colors.black,
-              fontSize: 26.sp,
-              fontWeight: FontWeight.bold
-          ),
-          toolbarHeight: 85.h,
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          elevation: 1.5,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

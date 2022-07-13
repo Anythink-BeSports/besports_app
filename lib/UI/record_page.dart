@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'package:sports_application/UI/record_detail_page.dart';
 
 class RecordPage extends StatefulWidget {
-  const RecordPage({Key? key}) : super(key: key);
+  final DateTime dateTime;
+  const RecordPage({Key? key, required this.dateTime}) : super(key: key);
 
   @override
   State<RecordPage> createState() => _RecordPageState();
@@ -15,15 +18,6 @@ class _RecordPageState extends State<RecordPage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text('Record'),
-          titleTextStyle: TextStyle(
-              color: Colors.black,
-              fontSize: 26.sp,
-              fontWeight: FontWeight.bold
-          ),
-          toolbarHeight: 85.h,
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          elevation: 1.5,
         ),
         body: ListView(
           children: [
@@ -32,7 +26,7 @@ class _RecordPageState extends State<RecordPage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 10.0.h, 20.0.w, 10.0.h),
-                    child: Text('2022-06-30', style: TextStyle(fontWeight: FontWeight.w500),),)
+                    child: Text(DateFormat('yyyy-MM-dd').format(widget.dateTime)),)
                 ]
             ),
             viewCard('Bench-Press', '5', '42'),
@@ -44,17 +38,33 @@ class _RecordPageState extends State<RecordPage> {
             viewCard('Lat-Pull-Down', '3', '12'),
             viewCard('Shoulder-Press', '3', '12'),
             viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
+            viewCard('Shoulder-Press', '3', '12'),
           ],
         )
     );
   }
-  Card viewCard(String exercise_name, String set_num, String count_num) => Card(
+
+  Widget viewCard(String exercise_name, String set_num, String count_num) => Card(
     margin: EdgeInsets.fromLTRB(20.0.w, 0, 20.0.w, 13.0.h),
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0.sp)
     ),
-    elevation: 10,
+    elevation: 5.h,
     child: ListTile(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context)=>RecordDetailPage(dateTime: widget.dateTime)),
+          );
+        },
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0.sp)
+        ),
         title: Text(exercise_name, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15.sp),),
         trailing: Container(
           margin: EdgeInsets.zero,
