@@ -12,17 +12,17 @@ import 'login_page.dart';
 import 'setting_page.dart';
 import 'calendar_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import '../firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
-      options: const FirebaseOptions(
-          apiKey: "AIzaSyDnGnl32I4B3pv09DMCBusgLQ8ESTBQYKc",
-          appId: "1:375585344643:android:1f2e022e7f1fd502ea9fb6",
-          messagingSenderId: "375585344643",
-          projectId: "besports-841e2")
+    options: DefaultFirebaseOptions.currentPlatform,
   ).then((value) => Get.put(AuthController()));
+
   initializeDateFormatting().then((_) => runApp(const MyApp()));
+
 }
 
 class MyApp extends StatelessWidget {
