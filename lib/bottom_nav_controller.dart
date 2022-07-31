@@ -15,7 +15,6 @@ class BottomNavController extends GetxController {
       bottomHistory.remove(value);
     }
     bottomHistory.add(value);
-    print(bottomHistory);
   }
 
   Future<bool> willPopAction() async {

@@ -2,9 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sports_application/bottom_nav_controller.dart';
+import 'package:sports_application/nfc/nfc_manager.dart';
 import 'home_page.dart';
 import 'package:get/get.dart';
-import 'package:sports_application/service.controller/auth_controller.dart';
+  import 'package:sports_application/service.controller/auth_controller.dart';
 import 'package:sports_application/service.controller/record_controller.dart';
 import 'calibration_page.dart';
 import '../init_bindings.dart';
@@ -14,6 +15,7 @@ import 'calendar_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import '../firebase_options.dart';
 
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -22,6 +24,8 @@ Future<void> main() async {
   ).then((value) => Get.put(AuthController()));
 
   initializeDateFormatting().then((_) => runApp(const MyApp()));
+
+  NfcController().tagRead();
 
 }
 
@@ -69,6 +73,7 @@ class BeSports extends StatefulWidget{
 }
 
 class _BeSportsState extends State<BeSports> {
+
   int selectedItemIndex = 0;
   final screens = [
     const HomePage(),
